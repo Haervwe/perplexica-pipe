@@ -4,8 +4,8 @@ author: open-webui, gwaanl
 author_url: https://github.com/ViffyGwaanl/perplexica-pipe
 You can find the instructions and submit questions at the website above
 funding_url: https://github.com/ViffyGwaanl
-version: 0.3.7
-required_open_webui_version: 0.5.3
+version: 0.3.9
+required_open_webui_version: 0.5.4
 
 0.1.1：Create code to implement the "pipeline" function using the Perplexica search API
 0.2.1：Increased contextual memory function, which can record historical conversation data 
