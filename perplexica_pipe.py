@@ -28,18 +28,10 @@ from dataclasses import dataclass
 from open_webui.constants import TASKS
 from open_webui.utils.chat import generate_chat_completion
 import aiohttp
+from open_webui.models.users import User
 
 
-@dataclass
-class User:
-    id: str
-    email: str
-    name: str
-    role: str
-
-
-name = "Perplexica/"
-
+name = "Perplexica"
 
 
 class Pipe:
@@ -81,21 +73,11 @@ class Pipe:
     def __init__(self):
         self.type = "manifold"  # Pipe type
         self.id = "perplexica_pipe"  # Pipe ID
-        self.name = name  # Pipe name
         self.valves = self.Valves()  # Initialize Valves instance
         self.history = []  # Initialize history list for storing conversation history
 
     def pipes(self) -> List[dict]:
-        """Return a list of enabled pipes."""
-        enabled_pipes = []
-        if self.valves.enable_perplexica:
-            enabled_pipes.append(
-                {
-                    "id": "perplexica",
-                    "name": f"{self.valves.perplexica_chat_model}/{self.valves.perplexica_focus_mode}",
-                }
-            )
-        return enabled_pipes
+        return [{"id": f"{name}-pipe", "name": f"{name} Pipe"}]
 
     async def emit_status(self, level: str, message: str, done: bool):
         await self.__current_event_emitter__(
